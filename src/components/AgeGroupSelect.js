@@ -28,7 +28,7 @@ const SelectInputs = ({ name, value, handleOnChange, options }) => {
       onChange={handleOnChange}
       className={`block w-full p-2 rounded-none ${
         name === 'startAge' ? 'rounded-l-md' : 'rounded-r-md'
-      } border-0 ring-1 ring-orange ring-inset focus:ring-2 focus:ring-inset focus:ring-orange outline-0`}
+      } border-0 ring-1 ring-gray-700 ring-inset focus:ring-2 focus:ring-inset focus:ring-primary outline-0`}
     >
       {options}
     </select>
@@ -66,7 +66,7 @@ const AgeGroupSelect = ({ index, error, callback }) => {
           handleOnChange={handleStartAge}
           options={startOptions}
         />
-        <div className='bg-gray-200 border border-y-gray-400 self-stretch flex items-center justify-center w-16'>
+        <div className='bg-gray-700 border border-y-gray-700 self-stretch flex items-center justify-center w-16 text-gray-100'>
           <span>~</span>
         </div>
         <SelectInputs

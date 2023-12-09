@@ -1,6 +1,6 @@
 const Hamburger = ({ isOpen, handleOnClick }) => {
   return (
-    <div className='h-6 sm:hidden flex items-center'>
+    <div className='h-6 sm:hidden flex items-center pl-4'>
       <button
         onClick={handleOnClick}
         className='flex flex-col justify-center items-center group'
