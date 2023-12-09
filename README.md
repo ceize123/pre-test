@@ -1,70 +1,59 @@
-# Getting Started with Create React App
+## `Demos`
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<div align="center">
+    <div>
+        <h2>Price Input</h2>
+        <h3>Computer<h3>
+        <p align="start">1</p>
+        <img src="./src/assets/priceInput.png" alt="" width="500">
+        <p align="start">2</p>
+        <img src="./src/assets/priceInput2.png" alt="" width="500">
+        <p align="start">3</p>
+        <img src="./src/assets/priceInput3.png" alt="" width="500">
+        <h3>Mobile<h3>
+        <img src="./src/assets/priceInput_mobile.png" alt="" width="300">
+    </div>
+    <hr>
+    <div>
+        <h2>Age Group Select</h2>
+        <h3>Computer<h3>
+        <p align="start">1</p>
+        <img src="./src/assets/ageSelect.png" alt="" width="500">
+        <p align="start">2</p>
+        <img src="./src/assets/ageSelect_option.png" alt="" width="500">
+    </div>
+    <hr>
+    <div>
+        <h2>Age Group Price List</h2>
+        <h3>Computer<h3>
+        <p align="start">1</p>
+        <img src="./src/assets/list.png" alt="" width="500">
+        <p align="start">2</p>
+        <img src="./src/assets/list2.png" alt="" width="500">
+        <p align="start">3</p>
+        <img src="./src/assets/list_multi.png" alt="" width="500">
+        <h3>Mobile<h3>
+        <img src="./src/assets/list_mobile.png" alt="" width="300">
+    </div>
+</div>
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+---
 
 ### `npm test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Launches the test runner in the interactive watch mode.
+3 unit tests will be operated:
 
-### `npm run build`
+1. addComma test: to test addComma function
+   Input: -789,912.3
+   Should output: -789,912.3
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. getNumberIntervals test: to test getNumberIntervals
+   Input: \[[1, 3], [5, 12], [7, 10], [14, 17]]
+   Should output: {
+   overlap: \[[7, 10]],
+   notInclude: \[[0, 0], [4, 4], [13, 13], [18, 20]]
+   }
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+3. priceInput test: to test priceInput component
+   This is component version of addComma
