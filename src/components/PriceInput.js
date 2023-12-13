@@ -1,17 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { addComma } from '../helpers/utils';
 import InputLabel from './InputLabel';
 import ErrorMessage from './ErrorMessage';
-import { INITIAL_PRICE } from '../const';
 
-const PriceInput = ({ index, callback }) => {
-  const [price, setPrice] = useState(INITIAL_PRICE);
+const PriceInput = ({ index, price, callback }) => {
   const [error, setError] = useState('');
-
-  // If price has changed, call callback
-  useEffect(() => {
-    if (callback) callback(index, price);
-  }, [price]);
 
   const handleOnChange = (e) => {
     const val = e.target.value;
@@ -19,7 +12,8 @@ const PriceInput = ({ index, callback }) => {
     else {
       setError('');
     }
-    setPrice(addComma(val));
+    price = addComma(val);
+    callback(price, index);
   };
 
   return (

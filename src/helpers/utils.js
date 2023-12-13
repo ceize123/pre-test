@@ -1,16 +1,12 @@
 const getInputText = (num) => {
-  let inputText = String(num).replace(/[^\d.-]/g, ''); // Remove anything that is not a digit, a minus sign, or a dot
+  let inputText = String(num).replace(/[^\d.]/g, ''); // Remove anything that is not a digit or a dot
 
   // Ensure there's only one dot and minus sign
   const firstDotIndex = inputText.indexOf('.');
-  const firstMinusIndex = inputText.indexOf('-');
 
   // Replace subsequent dots and minus signs with an empty string
   inputText = inputText.replace(/\./g, (_, index) =>
     index > firstDotIndex ? '' : '.'
-  );
-  inputText = inputText.replace(/-/g, (_, index) =>
-    index > firstMinusIndex ? '' : '-'
   );
   return inputText;
 };
@@ -24,7 +20,7 @@ const getDecimals = (inputText) => {
   if (index !== -1) {
     return inputText.substring(index);
   } else {
-    return;
+    return '';
   }
 };
 
@@ -38,7 +34,8 @@ const getIntegers = (inputText) => {
 };
 
 const removeLeadingZero = (inputText) => {
-  if (inputText.startsWith('0') || inputText.startsWith('-0')) {
+  if (inputText.length === 0) return '';
+  if (inputText.startsWith('0')) {
     return inputText.replace(/^(-?)0+(?=\d)/, '$1');
   } else {
     return inputText;
@@ -51,12 +48,10 @@ export const addComma = (str) => {
   const decimals = getDecimals(inputText);
   let formattedIntegerPart;
 
-  if (integers.startsWith('-')) {
-    // If the input starts with a minus sign, keep it and format the rest
-    formattedIntegerPart =
-      '-' + integers.slice(1).replace(/\B(?=(\d{3})+(?!\d)(\.|$))/g, ',');
+  // If the integers is empty, while the decimals is not empty, set the integer part to 0
+  if (integers.length === 0 && decimals.length !== 0) {
+    formattedIntegerPart = 0;
   } else {
-    // If the input does not start with a minus sign, format normally
     formattedIntegerPart = integers.replace(/\B(?=(\d{3})+(?!\d)(\.|$))/g, ',');
   }
 

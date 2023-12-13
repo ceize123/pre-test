@@ -1,7 +1,6 @@
-import { useState, useMemo, useEffect } from 'react';
+import { useState, useMemo } from 'react';
 import InputLabel from './InputLabel';
 import ErrorMessage from './ErrorMessage';
-import { INITIAL_START_AGE, INITIAL_END_AGE } from '../const';
 
 const renderStartAgeOptions = (end) => {
   const num = Number(end);
@@ -35,25 +34,22 @@ const SelectInputs = ({ name, value, handleOnChange, options }) => {
   );
 };
 
-const AgeGroupSelect = ({ index, error, callback }) => {
-  const [startAge, setStartAge] = useState(INITIAL_START_AGE);
-  const [endAge, setEndAge] = useState(INITIAL_END_AGE);
+const AgeGroupSelect = ({ index, error, ageRange, callback }) => {
+  let startAge = ageRange[0];
+  let endAge = ageRange[1];
 
   // prevent redundant rendering
   const startOptions = useMemo(() => renderStartAgeOptions(endAge), [endAge]);
   const endOptions = useMemo(() => renderEndAgeOptions(startAge), [startAge]);
 
-  // If start age or end age has changed, call callback
-  useEffect(() => {
-    if (callback) callback(index, [startAge, endAge]);
-  }, [startAge, endAge]);
-
   const handleStartAge = (e) => {
-    setStartAge(parseInt(e.target.value));
+    const val = parseInt(e.target.value);
+    if (callback) callback([val, endAge], index);
   };
 
   const handleEndAge = (e) => {
-    setEndAge(parseInt(e.target.value));
+    const val = parseInt(e.target.value);
+    if (callback) callback([startAge, val], index);
   };
 
   return (

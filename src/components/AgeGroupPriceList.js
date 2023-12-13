@@ -6,6 +6,17 @@ import { group } from '../const';
 
 const divider = <div className='border border-b-1 border-gray-200 mt-8'></div>;
 
+const DeleteButton = ({ handleRemove }) => {
+  return (
+    <button
+      className='bg-red-500 text-gray-100 rounded-md px-3 py-1 text-sm transition-all duration-150 hover:bg-red-700'
+      onClick={handleRemove}
+    >
+      刪除
+    </button>
+  );
+};
+
 const AgeGroupPriceList = () => {
   const [list, setList] = useState([group]);
   const [available, setAvailable] = useState(false);
@@ -26,23 +37,27 @@ const AgeGroupPriceList = () => {
   }, [list]);
 
   const renderList = () => {
-    return list.map((_, i) => (
+    return list.map((item, i) => (
       <div key={`list-${i}`} className='pt-4'>
-        <h2 className='text-lg'>{`價格設定 - ${i + 1}`}</h2>
+        <div className='flex justify-between'>
+          <h2 className='text-lg'>{`價格設定 - ${i + 1}`}</h2>
+          <DeleteButton handleRemove={() => handleRemove(i)} />
+        </div>
         <div className='grid sm:grid-cols-2 grid-cols-1 sm:gap-x-4 gap-y-8 sm:gap-y-0 mt-5'>
           <AgeGroupSelect
             index={i}
             error={ageError}
+            ageRange={item.ageRange}
             callback={selectCallback}
           />
-          <PriceInput index={i} callback={inputCallback} />
+          <PriceInput index={i} price={item.price} callback={inputCallback} />
         </div>
         {divider}
       </div>
     ));
   };
 
-  const selectCallback = (index, range) => {
+  const selectCallback = (range, index) => {
     setList((prevList) => {
       const updatedList = [...prevList];
       updatedList[index] = { ...updatedList[index], ageRange: range };
@@ -50,7 +65,7 @@ const AgeGroupPriceList = () => {
     });
   };
 
-  const inputCallback = (index, price) => {
+  const inputCallback = (price, index) => {
     setList((prevList) => {
       const updatedList = [...prevList];
       updatedList[index] = { ...updatedList[index], price: price };
@@ -62,6 +77,14 @@ const AgeGroupPriceList = () => {
     if (available) {
       setList((prevList) => [...prevList, group]);
     }
+  };
+
+  const handleRemove = (index) => {
+    setList((prevList) => {
+      const updatedList = [...prevList];
+      updatedList.splice(index, 1);
+      return updatedList;
+    });
   };
 
   return (

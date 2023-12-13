@@ -1,5 +1,4 @@
 import { BrowserRouter } from 'react-router-dom';
-import Navigation from './components/Navigation';
 import Tasks from './components/Tasks';
 import ay_logo from './assets/ay_logo.svg';
 
@@ -11,7 +10,6 @@ function App() {
           <img src={ay_logo} alt='logo' width='250' />
           <h1>Pre-Test by 郭奕佐</h1>
         </div>
-        <Navigation />
         <Tasks />
       </div>
     </BrowserRouter>
